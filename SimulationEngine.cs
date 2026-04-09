@@ -15,10 +15,11 @@ namespace ConsoleApp2
         ref int totalFuelConsumed)
         {
             processedCount = 0;
-            if (map == null)
+            if (map == null || map.Length == 0)
             {
                 return false;
             }
+            bool hasmodules = false;
             foreach (AbstractModule[] row in map)
             {
                 if(row == null)
@@ -31,6 +32,7 @@ namespace ConsoleApp2
                     {
                         continue;
                     }
+                    hasmodules = true;
                     int fuelBefore = module.FuelLeft;
                     module.Act();
                     int fuelAfter = module.FuelLeft;
@@ -38,7 +40,7 @@ namespace ConsoleApp2
                     processedCount++;
                 }
             }
-            return true;
+            return hasmodules;
         }
         public static void ShiftMapCoords(AbstractModule[][] map, in Coord offset)
     {
