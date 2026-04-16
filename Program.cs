@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp2
+﻿namespace ZludovaPractica
 {
     internal class Program
     {

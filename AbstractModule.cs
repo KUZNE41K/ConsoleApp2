@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp2
+namespace ZludovaPractica
 {
     public abstract class AbstractModule
     {
         protected Coord Position;
         protected int Fuel;
 
-        protected AbstractModule(Coord position, int fuel)
+        public AbstractModule(Coord position, int fuel)
         {
             Position = position;
             Fuel = fuel;

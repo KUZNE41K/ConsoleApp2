@@ -4,25 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp2
+namespace ZludovaPractica
 {
     public class SimulationEngine
     {
         public bool TryStep(
-        AbstractModule[][] map,
-        in int turnNumber,
-        out int processedCount,
-        ref int totalFuelConsumed)
+            AbstractModule[][] map,
+            in int turnNumber,
+            out int processedCount,
+            ref int totalFuelConsumed)
         {
             processedCount = 0;
             if (map == null || map.Length == 0)
             {
                 return false;
             }
-            bool hasmodules = false;
             foreach (AbstractModule[] row in map)
             {
-                if(row == null)
+                if (row == null)
                 {
                     continue;
                 }
@@ -32,7 +31,6 @@ namespace ConsoleApp2
                     {
                         continue;
                     }
-                    hasmodules = true;
                     int fuelBefore = module.FuelLeft;
                     module.Act();
                     int fuelAfter = module.FuelLeft;
@@ -40,10 +38,10 @@ namespace ConsoleApp2
                     processedCount++;
                 }
             }
-            return hasmodules;
+            return processedCount > 0;
         }
         public static void ShiftMapCoords(AbstractModule[][] map, in Coord offset)
-    {
+        {
         foreach (AbstractModule[] row in map)
         {
             if (row == null)
